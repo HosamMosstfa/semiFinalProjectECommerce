@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&family=Rubik:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&display=swap");
+
 :root {
   --primary-color: #ff6b6b;
   --secondary-color: #794afa;
@@ -45,6 +46,7 @@ body {
   line-height: 1.4;
   color: var(--dark-color);
   background-color: var(--white-color);
+  overflow-x: clip;
 }
 
 a {
@@ -95,7 +97,7 @@ h4 {
 }
 
 /*------------ 
- *REUSAPLE SELECTOR
+ * REUSABLE SELECTORS
   ------------*/
 
 .container {
@@ -170,11 +172,8 @@ h4 {
   overflow: hidden;
 }
 
-/* 
-**----------------*/
-
 /*------------ 
- 01.HEADER
+ 01. HEADER
   ------------*/
 
 :where(.off-canvas, header) li > a {
@@ -185,8 +184,8 @@ h4 {
 }
 
 /*------------ 
- 01.HEADER:
-   a.HEADER TOP
+ 01. HEADER:
+   a. HEADER TOP
   ------------*/
 .header-top .wrapper {
   font-size: var(--font-small);
@@ -209,7 +208,7 @@ h4 {
   line-height: 2em;
   background-color: var(--white-color);
   border: 1px solid var(--border-color);
-  z-index: 1;
+  z-index: 10;
   display: none;
 }
 
@@ -224,9 +223,10 @@ h4 {
 .header-top li:hover ul {
   display: block;
 }
+
 /*------------ 
- 01.HEADER:
-   b.HEADER NAV
+ 01. HEADER:
+   b. HEADER NAV
   ------------*/
 .header-nav {
   padding: 0.5em 0;
@@ -294,14 +294,14 @@ nav .fly-item,
   right: -32px;
   background-color: var(--primary-color);
 }
-.header-nav .righ {
+.header-nav :is(.right, .righ) {
   position: relative;
   margin-left: auto;
 }
-.header-nav .righ .icon-large {
+.header-nav :is(.right, .righ) .icon-large {
   position: relative;
 }
-.header-nav .righ .fly-item {
+.header-nav :is(.right, .righ) .fly-item {
   top: 0;
   right: 16px;
   width: 16px;
@@ -392,8 +392,8 @@ textarea:focus-visible {
 }
 
 /*------------ 
- 01.HEADER:
-   c.HEADER MAIN, DEPARTMENTS CATEGORY
+ 01. HEADER:
+   c. HEADER MAIN, DEPARTMENTS CATEGORY
   ------------*/
 .header-main {
   background-color: var(--secondary-dark-color);
@@ -436,9 +436,10 @@ textarea:focus-visible {
 .dpt-menu .has-child li a:hover {
   text-decoration: underline;
 }
+
 /*------------ 
- 01.HEADER:
-   d.SEARCH FORM
+ 01. HEADER:
+   d. SEARCH FORM
   ------------*/
 .header-main .right {
   flex: 1;
@@ -481,25 +482,30 @@ form.search button:hover {
 }
 
 /*------------ 
- 01.HEADER:
-   e.RESPONSIVE MENU - OFF CANVAS
+ 01. HEADER:
+   e. RESPONSIVE MENU - OFF CANVAS
   ------------*/
 .site-off {
   position: fixed;
   width: 320px;
+  max-width: 85vw;
   height: var(--percent100);
   background-color: var(--white-color);
   overflow-y: auto;
   z-index: 1000;
   transform: translateX(-100%);
   visibility: hidden;
-  transition: transform 0.4s, visibility 0.4s;
+  transition:
+    transform 0.4s,
+    visibility 0.4s;
   will-change: transform, visibility;
 }
 .showmenu .site-off {
   transform: translateX(0);
   visibility: visible;
-  transform: transform 0.4s 0s, visibility 0s 0s;
+  transition:
+    transform 0.4s 0s,
+    visibility 0s 0s;
 }
 .off-canvas {
   width: var(--percent100);
@@ -551,11 +557,10 @@ form.search button:hover {
   font-weight: var(--fw3);
   line-height: 28px;
   padding-left: 3em;
-
   height: auto;
   max-height: 0;
   overflow: hidden;
-  transition: max-hight 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+  transition: max-height 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
 }
 .off-canvas .expand > :where(ul, .mega) {
   max-height: 2000px;
@@ -604,10 +609,10 @@ form.search button:hover {
   line-height: 16px;
   margin: 0 0.5em 0.5em 0;
 }
-/*------------ 
- 02.SLIDER
-  ------------*/
 
+/*------------ 
+ 02. SLIDER
+  ------------*/
 .slider .item {
   position: relative;
   height: 474px;
@@ -618,6 +623,7 @@ form.search button:hover {
   top: 30%;
   left: 0;
   width: 450px;
+  max-width: 100%;
   height: 300px;
   background-color: var(--white-color);
   z-index: 1;
@@ -635,7 +641,7 @@ form.search button:hover {
   font-size: var(--font-small);
   font-weight: var(--fw7);
   width: fit-content;
-  padding: 4px;
+  padding: 4px 8px;
   background-color: var(--dark-color);
   color: var(--white-color);
   border-radius: 4px;
@@ -654,8 +660,9 @@ form.search button:hover {
 .swiper-pagination .swiper-pagination-bullet-active {
   background-color: var(--secondary-dark-color);
 }
+
 /*------------ 
- 03.BRANDS
+ 03. BRANDS
   ------------*/
 .brands .wrapper {
   justify-content: space-around;
@@ -671,7 +678,7 @@ form.search button:hover {
 }
 
 /*------------ 
- 04.PRODUCT BLOCK STYLE
+ 04. PRODUCT BLOCK STYLE
   ------------*/
 .sectop {
   justify-content: space-between;
@@ -692,8 +699,8 @@ form.search button:hover {
 }
 
 /*------------ 
- 04.PRODUCT BLOCK STYLE :
-   a- GLOBAL PRODUCTS
+ 04. PRODUCT BLOCK STYLE:
+   a. GLOBAL PRODUCTS
   ------------*/
 .products .offer {
   text-align: center;
@@ -745,7 +752,9 @@ form.search button:hover {
   line-height: 1;
   background-color: var(--white-color);
   opacity: 0.5;
-  transition: var(--trans-background-color), opacity 0.3s;
+  transition:
+    var(--trans-background-color),
+    opacity 0.3s;
 }
 .products .item:hover .hoverable li a {
   opacity: 1;
@@ -760,7 +769,9 @@ form.search button:hover {
 .products .hoverable li:not(.active) {
   transform: translateX(100%);
   opacity: 0;
-  transition: transform 0.3s, opacity 0.2s;
+  transition:
+    transform 0.3s,
+    opacity 0.2s;
 }
 .products .item:hover .hoverable li {
   transform: translateX(0);
@@ -806,10 +817,9 @@ form.search button:hover {
   height: 20px;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='16' height='16'%3E%3Cpath d='M12.0006 18.26L4.94715 22.2082L6.52248 14.2799L0.587891 8.7918L8.61493 7.84006L12.0006 0.5L15.3862 7.84006L23.4132 8.7918L17.4787 14.2799L19.054 22.2082L12.0006 18.26Z' fill='rgba(240,187,64,1)'%3E%3C/path%3E%3C/svg%3E");
   background-position-y: top;
-  background-repeat-y: no-repeat;
+  background-repeat: repeat-x;
 }
-/* to set width of stars */
-.products .item:where(:nth-child(3), :nth-child(3)) .stars {
+.products .item:nth-child(3) .stars {
   width: 64px;
 }
 .products h3 {
@@ -835,7 +845,7 @@ form.search button:hover {
   color: var(--light-text-color);
   text-decoration: line-through;
 }
-.products .stock .qt {
+.products .stock .qty {
   display: flex;
   justify-content: space-between;
 }
@@ -866,9 +876,10 @@ form.search button:hover {
   width: 100%;
   margin-bottom: 2em;
 }
+
 /*------------ 
- 04.PRODUCT BLOCK STYLE :
-   b- BIG PRODUCTS
+ 04. PRODUCT BLOCK STYLE:
+   b. BIG PRODUCTS
   ------------*/
 .products.big .item {
   flex-direction: column;
@@ -880,8 +891,8 @@ form.search button:hover {
 }
 
 /*------------ 
- 04.PRODUCT BLOCK STYLE :
-   c- MINI PRODUCTS
+ 04. PRODUCT BLOCK STYLE:
+   c. MINI PRODUCTS
   ------------*/
 .products.mini .item {
   margin-bottom: 2em;
@@ -894,9 +905,10 @@ form.search button:hover {
 .products:where(.mini, .main) h3 {
   font-weight: 400;
 }
+
 /*------------ 
- 04.PRODUCT BLOCK STYLE :
-   d- MAIN PRODUCTS
+ 04. PRODUCT BLOCK STYLE:
+   d. MAIN PRODUCTS
   ------------*/
 .products.main .item {
   flex-direction: column;
@@ -938,8 +950,9 @@ form.search button:hover {
 .products.main .item:hover .content > *:not(.footer) {
   z-index: 3;
 }
+
 /*------------ 
- 05.BANNER
+ 05. BANNER
   ------------*/
 .banners .item {
   position: relative;
@@ -952,7 +965,7 @@ form.search button:hover {
 .banner .get-gray {
   background-color: var(--border-color);
 }
-.banner :where(.text-content, .over-link) {
+.banner :where(.text-content, .over-links) {
   position: absolute;
   top: 0;
   left: 0;
@@ -964,7 +977,7 @@ form.search button:hover {
   justify-content: space-evenly;
 }
 .banner h3 {
-  font-size: calc(1em+ 0.5vw);
+  font-size: calc(1em + 0.5vw);
   font-weight: var(--fw3);
 }
 .banner h3 span {
@@ -995,11 +1008,11 @@ form.search button:hover {
 .mini-links li a:hover {
   text-decoration: underline;
 }
-/*------------ 
- 05.FOOTER:
-   a-NEWS LETTER
-  ------------*/
 
+/*------------ 
+ 05. FOOTER:
+   a. NEWSLETTER
+  ------------*/
 .newsletter {
   padding: 2.5em 0;
   background-color: var(--dark-color);
@@ -1020,17 +1033,19 @@ form.search button:hover {
   max-width: 500px;
   width: var(--percent100);
 }
+
 /*------------ 
- 05.FOOTER:
-   b-WIDGETS
+ 05. FOOTER:
+   b. WIDGETS
   ------------*/
 .widgets {
   padding: 3.5em 2.5em;
   background-color: var(--light-bg-color);
 }
+
 /*------------ 
- 05.FOOTER:
-   c-FOOTER INFO
+ 05. FOOTER:
+   c. FOOTER INFO
   ------------*/
 .footer-info {
   padding: 3.5em 0 5em;
@@ -1061,8 +1076,9 @@ form.search button:hover {
   margin-top: 2em;
   text-align: center;
 }
+
 /*------------ 
- 06.BOTTOM MENU
+ 06. BOTTOM MENU
   ------------*/
 .menu-bottom {
   position: fixed;
@@ -1071,7 +1087,7 @@ form.search button:hover {
   bottom: 0;
   height: 60px;
   background-color: var(--white-color);
-  box-shadow: 0 -2px 10px rgb(0, 0, 0 / 10%);
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
   z-index: 900;
 }
 .menu-bottom nav li {
@@ -1102,11 +1118,11 @@ form.search button:hover {
   margin-right: -20px;
   background-color: var(--secondary-dark-color);
 }
-/*------------ 
- 06.BOTTOM MENU:
-   a-SEARCH
-  ------------*/
 
+/*------------ 
+ 06. BOTTOM MENU:
+   a. SEARCH
+  ------------*/
 .search-bottom {
   position: fixed;
   bottom: 60px;
@@ -1132,8 +1148,9 @@ form.search button:hover {
 .search-bottom .t-close:hover {
   background-color: var(--primary-color);
 }
+
 /*------------ 
- 07.OVERLAY
+ 07. OVERLAY
   ------------*/
 .overlay {
   position: fixed;
@@ -1151,8 +1168,9 @@ form.search button:hover {
   opacity: 1;
   visibility: inherit;
 }
+
 /*------------ 
- 08.PAGE SINGLE
+ 08. PAGE SINGLE
   ------------*/
 .page-home .dpt-cat .dpt-trigger,
 .dpt-trigger .ri-close-line,
@@ -1162,9 +1180,10 @@ form.search button:hover {
 .showdpt .dpt-trigger .ri-close-line {
   display: block;
 }
+
 /*------------ 
- 08.PAGE SINGLE :
-   a-BREAD CRUMB
+ 08. PAGE SINGLE:
+   a. BREADCRUMB
   ------------*/
 .breadcrumb {
   font-size: var(--font-small);
@@ -1181,9 +1200,10 @@ form.search button:hover {
   text-overflow: ellipsis;
   color: var(--light-text-color);
 }
+
 /*------------ 
- 08.PAGE SINGLE :
-   b-PRODUCT DETAILS
+ 08. PAGE SINGLE:
+   b. PRODUCT DETAILS
   ------------*/
 .products.one .item {
   flex-direction: column;
@@ -1225,7 +1245,9 @@ form.search button:hover {
 .products :is(.swiper-button-next, .swiper-button-prev) {
   outline: 0;
   color: var(--secondary-dark-color);
-  transition: var(--trans-background), transform 0.3s;
+  transition:
+    var(--trans-background),
+    transform 0.3s;
 }
 .products .big-image:hover .swiper-button-next {
   transform: translateX(10px);
@@ -1239,9 +1261,10 @@ form.search button:hover {
 .products .big-image:hover :is(.swiper-button-next, .swiper-button-prev) {
   background-color: var(--light-bg-color);
 }
+
 /*------------ 
- 08.PAGE SINGLE :
-   c- PRODUCT DESCRIPTION
+ 08. PAGE SINGLE:
+   c. PRODUCT DESCRIPTION
   ------------*/
 .products.one .available {
   font-size: var(--font-small);
@@ -1365,9 +1388,10 @@ form.search button:hover {
   margin: 1em 2em 1em 0;
   transition: var(--trans-color);
 }
+
 /*------------ 
- 08.PAGE SINGLE :
-   d- PRODUCT REVIEW
+ 08. PAGE SINGLE:
+   d. PRODUCT ACCORDION
   ------------*/
 .products .collapse .has-child > a {
   position: relative;
@@ -1409,13 +1433,15 @@ form.search button:hover {
 }
 .products .collapse .expand .content {
   display: flex;
+  flex-direction: column;
 }
 .products .collapse .expand > a::before {
   content: "-";
 }
+
 /*------------ 
- 08.PAGE SINGLE :
-   e- PRODUCT REVIEW
+ 08. PAGE SINGLE:
+   e. PRODUCT REVIEW
   ------------*/
 .products .reviews h4 {
   font-size: 2em;
@@ -1469,8 +1495,8 @@ form.search button:hover {
 }
 
 /*------------ 
-  08.PAGE SINGLE :
-    f- PRODUCT REVIEW FORM
+  08. PAGE SINGLE:
+    f. PRODUCT REVIEW FORM
     ------------*/
 .review-form .rating {
   flex-wrap: wrap;
@@ -1517,8 +1543,9 @@ form label {
   margin-bottom: 0.5em;
   text-transform: uppercase;
 }
+
 /*------------ 
-  09.PAGE SINGLE : SPICIAL OFFER
+  09. PAGE SINGLE: SPECIAL OFFER
     ------------*/
 .qty {
   display: flex;
@@ -1560,9 +1587,8 @@ form label {
 }
 
 /*------------ 
-  10.PAGE CATEGORY
+  10. PAGE CATEGORY
     ------------*/
-
 .single-category .holder {
   display: flex;
   flex-direction: column;
@@ -1573,8 +1599,8 @@ form label {
 }
 
 /*------------ 
-  10.PAGE CATEGORY :
-    a- SLIDER PRODUCTS FILTER
+  10. PAGE CATEGORY:
+    a. SIDEBAR PRODUCTS FILTER
     ------------*/
 .filter-block {
   margin-bottom: 1em;
@@ -1665,8 +1691,8 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 /*------------ 
-  10.PAGE CATEGORY :
-    b- Head & PRODUCTS BLOCK
+  10. PAGE CATEGORY:
+    b. HEAD & PRODUCTS BLOCK
     ------------*/
 .page-title {
   margin-bottom: 3em;
@@ -1733,7 +1759,7 @@ input[type="range"]::-webkit-slider-thumb {
   background-color: var(--white-color);
   overflow: auto;
   z-index: 1000;
-  box-shadow: rgb(0 0 0 / 30%) 0 10px 50px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0 10px 50px;
   visibility: hidden;
   opacity: 0;
 }
@@ -1741,8 +1767,9 @@ input[type="range"]::-webkit-slider-thumb {
   visibility: visible;
   opacity: 1;
 }
+
 /*------------ 
-  11.CART
+  11. CART
     ------------*/
 .mini-cart {
   position: absolute;
@@ -1751,7 +1778,7 @@ input[type="range"]::-webkit-slider-thumb {
   right: 0;
   background-color: var(--white-color);
   z-index: 1000;
-  box-shadow: rgb(0 0 0 / 30%) 0 10px 50px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0 10px 50px;
   visibility: hidden;
   opacity: 0;
 }
@@ -1830,10 +1857,10 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 /*------------ 
-  12. PAGE CART
+12. PAGE CART
     ------------*/
 .products.cart form {
-  width: var(--percent100) 0;
+  width: var(--percent100);
 }
 .products.cart table thead th {
   vertical-align: middle;
@@ -1954,7 +1981,7 @@ input[type="range"]::-webkit-slider-thumb {
 }
 .cart-summary .grand-total td {
   font-size: 2em;
-  font-family: "Poppins";
+  font-family: "Poppins", sans-serif;
   font-weight: var(--fw8);
   line-height: 2em;
 }
@@ -1967,7 +1994,7 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 /*------------ 
-  13. PAGE CHECKOUT
+13. PAGE CHECKOUT
     ------------*/
 .checkout {
   margin: 5em 0;
@@ -1975,7 +2002,7 @@ input[type="range"]::-webkit-slider-thumb {
 .checkout .left {
   padding: 4em;
   background-color: var(--light-bg-color);
-  box-shadow: 0 15px 70px -8px rgb(0 0 0 / 20%);
+  box-shadow: 0 15px 70px -8px rgba(0, 0, 0, 0.2);
 }
 .checkout .item {
   width: var(--percent100);
@@ -2000,7 +2027,7 @@ input[type="range"]::-webkit-slider-thumb {
   border-radius: var(--percent50);
 }
 .checkout p :where(input, textarea) {
-  background-color: rgba(255 255 255 / 50%);
+  background-color: rgba(255, 255, 255, 0.5);
   font-family: inherit;
 }
 .checkout p input:focus {
@@ -2062,7 +2089,7 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 /*------------ 
-  14. MODAL
+14. MODAL
     ------------*/
 .modal {
   position: fixed;
@@ -2081,13 +2108,18 @@ input[type="range"]::-webkit-slider-thumb {
   visibility: hidden;
   opacity: 0;
   transform: translateY(20px);
-  transition: transform 0.2s, visibility 0.2s;
+  transition:
+    transform 0.2s,
+    visibility 0.2s;
 }
 .showmodal .modal {
   visibility: visible;
   opacity: 1;
   transform: translateY(0);
-  transition: transform 1s, visibility 1s, opacity 1s;
+  transition:
+    transform 1s,
+    visibility 1s,
+    opacity 1s;
 }
 .modal .image {
   position: relative;
@@ -2133,9 +2165,8 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 /*------------
-sign in page
+SIGN IN PAGE
 -------------*/
-
 .main-container {
   background-color: var(--secondary-color);
   background: linear-gradient(to right, #845bf3, #59506f);
@@ -2143,7 +2174,8 @@ sign in page
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  height: 100vh;
+  min-height: 100vh;
+  padding: 24px;
 }
 .container1 {
   background-color: #fff;
@@ -2153,7 +2185,7 @@ sign in page
   overflow: hidden;
   width: 768px;
   max-width: 100%;
-  min-height: 480px;
+  min-height: 500px;
 }
 
 .container1 p {
@@ -2303,7 +2335,6 @@ sign in page
 
 .toggle1 {
   background-color: var(--secondary-color);
-  height: 100%;
   background: linear-gradient(to right, #794afa, #453c5c);
   color: #fff;
   position: relative;
@@ -2351,14 +2382,13 @@ sign in page
 }
 
 /*------------ 
-  15. RESPONSIVE
+15. RESPONSIVE
     ------------*/
 
 @media screen and (min-width: 481px) {
   .products.main .item {
     flex: 0 0 50%;
   }
-  /* Page Single */
   .products.one .big-image {
     margin-bottom: 2em;
   }
@@ -2441,11 +2471,11 @@ sign in page
     margin: 0;
     border-bottom: 0;
   }
-  .header-nav .righ li > a {
+  .header-nav :is(.right, .righ) li > a {
     margin-left: 1em;
   }
-  /* Mega Menu */
 
+  /* Mega Menu */
   nav .mega {
     position: absolute;
     width: var(--percent100);
@@ -2456,7 +2486,7 @@ sign in page
     padding: 2.5em;
     line-height: 2em;
     background-color: var(--light-bg-color);
-    box-shadow: rgb(0 0 0 / 20%) 0 30px 20px -30px;
+    box-shadow: rgba(0, 0, 0, 0.2) 0 30px 20px -30px;
     z-index: 100;
     display: none;
   }
@@ -2520,15 +2550,14 @@ sign in page
     max-width: 600px;
     margin-left: auto;
   }
-  /*
-  DEPARTMENTS MENU
-  */
+
+  /* DEPARTMENTS MENU */
   .dpt-menu {
     position: absolute;
     top: var(--percent100);
     width: 300px;
     background-color: var(--white-color);
-    border: 1px soild var(--border-color);
+    border: 1px solid var(--border-color);
     border-top: 0;
     border-bottom: 0;
   }
@@ -2556,8 +2585,6 @@ sign in page
     background-size: auto;
   }
 
-  /* SHOWING THE FIRST SUB MENU */
-
   .dpt-menu .beauty ul {
     background-image: url(assets/menu/menu_bg1.jpg);
   }
@@ -2580,7 +2607,7 @@ sign in page
     background: linear-gradient(
       90deg,
       rgba(255, 255, 255, 1) 0%,
-      rgba(255, 255, 255, 0)
+      rgba(255, 255, 255, 0) 100%
     );
   }
   .dpt-menu .mega {
@@ -2591,7 +2618,7 @@ sign in page
     display: flex;
   }
 
-  /* slider */
+  /* SLIDER */
   .slider > div > .wrapper {
     width: calc(100% - (300px + 2em));
     margin-left: auto;
@@ -2617,7 +2644,7 @@ sign in page
     align-items: center;
   }
 
-  /* Page-single */
+  /* PAGE SINGLE */
   #page:not(.page-home) .dpt-menu {
     display: none;
   }
@@ -2627,7 +2654,8 @@ sign in page
   .products.one .flexwrap > .row:last-child > .item {
     padding-left: 2em;
   }
-  /* Page Category */
+
+  /* PAGE CATEGORY */
   .single-category .holder {
     flex-direction: row;
   }
@@ -2651,7 +2679,7 @@ sign in page
     flex: 0 0 33.3333%;
   }
 
-  /* page cart */
+  /* PAGE CART */
   .products.cart .form-cart {
     width: 66%;
   }
@@ -2662,6 +2690,9 @@ sign in page
   }
 }
 
+/*------------
+16. UTILITIES, THEME & STORE COMPONENTS
+    ------------*/
 .store-toast {
   position: fixed;
   left: 50%;
@@ -2700,7 +2731,8 @@ sign in page
   color: var(--white-color);
 }
 
-:root[data-theme="dark"] {
+:root[data-theme="dark"],
+body.dark-theme {
   --white-color: #151521;
   --light-bg-color: #24243a;
   --light-text-color: #b8bdd0;
@@ -2710,15 +2742,31 @@ sign in page
 }
 
 :root[data-theme="dark"] body,
+body.dark-theme,
 :root[data-theme="dark"] .header-top,
+body.dark-theme .header-top,
 :root[data-theme="dark"] .header-nav,
+body.dark-theme .header-nav,
 :root[data-theme="dark"] .header-main,
+body.dark-theme .header-main,
 :root[data-theme="dark"] footer,
+body.dark-theme footer,
 :root[data-theme="dark"] .newsletter,
+body.dark-theme .newsletter,
 :root[data-theme="dark"] .mini-cart,
-:root[data-theme="dark"] .modal {
+body.dark-theme .mini-cart,
+:root[data-theme="dark"] .modal,
+body.dark-theme .modal {
   background: var(--white-color);
   color: var(--dark-color);
+}
+
+body.dark-theme .dpt-menu .has-child > :where(ul, .mega)::before {
+  background: linear-gradient(
+    90deg,
+    rgba(21, 21, 33, 0.96) 0%,
+    rgba(21, 21, 33, 0.35) 100%
+  );
 }
 
 :root[data-theme="dark"] .container1,
@@ -2842,17 +2890,12 @@ sign in page
   padding: 12px 0;
 }
 
-.main-container {
-  padding: 24px;
-}
-
-.container1 {
-  min-height: 500px;
-}
-
 .container1 form button,
 .container1 button {
-  transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .container1 form button:hover,
@@ -2892,7 +2935,9 @@ sign in page
   justify-content: center;
   font-size: 18px;
   backdrop-filter: blur(8px);
-  transition: transform 0.2s ease, background-color 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease;
 }
 
 .auth-theme-toggle:hover {

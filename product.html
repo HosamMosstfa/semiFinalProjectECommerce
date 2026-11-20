@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Product - Store</title>
+    <title>Product Details - .store</title>
     <link rel="stylesheet" href="style.css" />
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet" />
   </head>
@@ -19,18 +19,19 @@
                   <ul class="flexitem second-links">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="page-category.html">Shop</a></li>
-                    <li><a href="sign-in.html">Account</a></li>
+                    <li><a href="wishlist.html">Wishlist</a></li>
+                    <li><a href="account.html">My Account</a></li>
                   </ul>
                 </nav>
               </div>
               <div class="right">
                 <ul class="flexitem second-links">
+                  <li class="mobile-hide">
+                    <a href="wishlist.html"><div class="icon-large"><i class="ri-heart-line"></i></div><div class="fly-item"><span class="item-number">0</span></div></a>
+                  </li>
                   <li class="iscart">
                     <a href="cart.html">
-                      <div class="icon-large">
-                        <i class="ri-shopping-cart-line"></i>
-                        <div class="fly-item"><span class="item-number">0</span></div>
-                      </div>
+                      <div class="icon-large"><i class="ri-shopping-cart-line"></i><div class="fly-item"><span class="item-number">0</span></div></div>
                       <div class="icon-text"><div class="mini-text">Total</div><div class="cart-total">$0.00</div></div>
                     </a>
                     <div class="mini-cart"><div class="content"><div class="cart-head">0 items in cart</div><div class="cart-body"><ul class="products mini"></ul></div><div class="cart-footer"><div class="subtotal"><p>Subtotal</p><p><strong>$0.00</strong></p></div><div class="actions"><a href="checkout.html" class="primary-button">Checkout</a><a href="cart.html" class="secondary-button">View Cart</a></div></div></div></div>
@@ -43,10 +44,111 @@
       </header>
 
       <main>
-        <div id="product-page"></div>
-      </main>
+        <div class="single-product">
+          <div class="container">
+            <div class="wrapper">
+              <div class="breadcrumb">
+                <ul class="flexitem">
+                  <li><a href="index.html">Home</a></li>
+                  <li><a href="page-category.html">Shop</a></li>
+                  <li>Product</li>
+                </ul>
+              </div>
 
-      <div class="overlay"></div>
+              <div class="column">
+                <div class="products one">
+                  <div class="flexwrap">
+                    <div class="row">
+                      <div class="item is_sticky">
+                        <div class="price"><span class="discount">25% <br />OFF</span></div>
+                        <div class="big-image">
+                          <img src="assets/products/apparel4.jpg" alt="" style="width:100%;border-radius:10px;" />
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="item">
+                        <h1>Product Name</h1>
+                        <div class="content">
+                          <div class="rating">
+                            <div class="stars"></div>
+                            <a href="#review-form" class="add-review mini-text">Add Your review</a>
+                          </div>
+                          <div class="stock-sku">
+                            <span class="available">In Stock</span>
+                            <span class="sku mini-text">SKU-STORE</span>
+                          </div>
+                          <div class="price">
+                            <span class="current">$0.00</span>
+                            <span class="normal">$0.00</span>
+                          </div>
+
+                          <div class="actions">
+                            <div class="qty-control flexitem">
+                              <button type="button" class="minus circle">-</button>
+                              <input type="text" value="1" />
+                              <button type="button" class="plus circle">+</button>
+                            </div>
+                            <div class="button-cart">
+                              <button type="button" class="primary-button">Add to cart</button>
+                            </div>
+                            <div class="wish-share">
+                              <ul class="flexitem second-links">
+                                <li><a href="#"><span class="icon-large"><i class="ri-heart-line"></i></span><span>Wishlist</span></a></li>
+                                <li><a href="#"><span class="icon-large"><i class="ri-share-line"></i></span><span>Share</span></a></li>
+                              </ul>
+                            </div>
+                          </div>
+
+                          <div class="description collapse">
+                            <ul>
+                              <li class="has-child expand">
+                                <a href="#0" class="icon-small">Specifications</a>
+                                <ul class="content" id="ds-specs-list"></ul>
+                              </li>
+                              <li class="has-child expand">
+                                <a href="#0" class="icon-small">Details</a>
+                                <div class="content"><p>Product description</p></div>
+                              </li>
+                              <li class="has-child expand">
+                                <a href="#0" class="icon-small">Reviews</a>
+                                <div class="content">
+                                  <div class="reviews">
+                                    <div class="review-block-body"><ul></ul></div>
+                                    <div id="review-form" class="review-form" style="margin-top:20px;">
+                                      <h4>Write a review</h4>
+                                      <div class="rating" style="margin:10px 0;">
+                                        <div class="rate-this">
+                                          <input type="radio" name="rating" id="star5" checked /><label for="star5"><i class="ri-star-fill"></i></label>
+                                          <input type="radio" name="rating" id="star4" /><label for="star4"><i class="ri-star-fill"></i></label>
+                                          <input type="radio" name="rating" id="star3" /><label for="star3"><i class="ri-star-fill"></i></label>
+                                          <input type="radio" name="rating" id="star2" /><label for="star2"><i class="ri-star-fill"></i></label>
+                                          <input type="radio" name="rating" id="star1" /><label for="star1"><i class="ri-star-fill"></i></label>
+                                        </div>
+                                      </div>
+                                      <form>
+                                        <p><label>Name</label><input type="text" /></p>
+                                        <p><label>Summary</label><input type="text" /></p>
+                                        <p><label>Review</label><textarea cols="30" rows="4"></textarea></p>
+                                        <p><a href="#" class="primary-button">Submit Review</a></p>
+                                      </form>
+                                    </div>
+                                  </div>
+                                </div>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
     </div>
 
     <script src="mock-api.js"></script>
