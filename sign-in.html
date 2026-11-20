@@ -11,6 +11,11 @@
     />
   </head>
   <body>
+    <script src="theme.js"></script>
+    <script src="store.js"></script>
+    <button type="button" class="auth-theme-toggle" data-theme-toggle aria-label="Toggle color theme">
+      <i class="ri-moon-line"></i>
+    </button>
     <div class="main-container ">
       <div class="container1" id="container1">
         <div class="form-container1 sign-up1">
@@ -54,7 +59,7 @@
             <input type="email" placeholder="Email" required />
             <input type="password" placeholder="Password" required />
             <a href="#">Forget Your Password?</a>
-            <button><a href="index.html">Log In</a></button>
+            <button type="submit">Log In</button>
           </form>
         </div>
         <div class="toggle-container1">
@@ -88,6 +93,30 @@
 
       loginBtn1.addEventListener("click", () => {
         container1.classList.remove("active1");
+      });
+
+      const signUpForm = document.querySelector(".sign-up1 form");
+      const signInForm = document.querySelector(".sign-in1 form");
+      signUpForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        if (!signUpForm.checkValidity()) return signUpForm.reportValidity();
+        const fields = signUpForm.querySelectorAll("input");
+        window.Store.createAccount({
+          name: fields[0].value,
+          email: fields[1].value,
+          password: fields[2].value
+        });
+        container1.classList.remove("active1");
+      });
+      signInForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        if (!signInForm.checkValidity()) return signInForm.reportValidity();
+        const fields = signInForm.querySelectorAll("input");
+        if (window.Store.login(fields[0].value, fields[1].value)) {
+          window.location.href = "index.html";
+        } else {
+          alert("Email or password is incorrect");
+        }
       });
     </script>
   </body>

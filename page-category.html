@@ -1511,6 +1511,9 @@
       <div class="overlay"></div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script src="mock-api.js"></script>
+    <script src="store.js"></script>
+    <script src="theme.js"></script>
     <script src="script.js"></script>
     <script>
       const Ftoshow = ".filter";
@@ -1526,7 +1529,7 @@
       });
 
       //auto close by click outside .filter
-      document.addEventListener(".click", (e) => {
+      document.addEventListener("click", (e) => {
         const isClosest = e.target.closest(Ftoshow);
         if (!isClosest && Fpopup.classList.contains("show")) {
           Fpopup.classList.remove("show");

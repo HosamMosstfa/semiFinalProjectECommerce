@@ -78,7 +78,7 @@ h4 {
   font-family: "Poppins", sans-serif;
 }
 h1 {
-  font-size: calc(1.3rem +1vw);
+  font-size: calc(1.3rem + 1vw);
   font-weight: var(--fw8);
   line-height: 1;
 }
@@ -325,7 +325,33 @@ nav .fly-item,
   height: auto;
   width: fit-content;
   border-radius: 2em;
+  border: 0;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  font-family: inherit;
+  font-weight: var(--fw6);
+  line-height: 1.2;
   transition: var(--trans-background-color);
+}
+
+button:disabled,
+.primary-button:disabled,
+.secondary-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+  filter: grayscale(0.2);
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid rgba(121, 74, 250, 0.28);
+  outline-offset: 3px;
 }
 
 .primary-button {
@@ -2633,5 +2659,292 @@ sign in page
     width: 34%;
     padding-left: 2.5em;
     margin-top: 0;
+  }
+}
+
+.store-toast {
+  position: fixed;
+  left: 50%;
+  bottom: 24px;
+  z-index: 1000;
+  transform: translate(-50%, 20px);
+  max-width: calc(100% - 32px);
+  padding: 12px 18px;
+  border-radius: 8px;
+  background: var(--dark-color);
+  color: var(--white-color);
+  box-shadow: 0 12px 30px rgba(10, 2, 28, 0.24);
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.25s ease;
+  text-align: center;
+}
+
+.store-toast.show {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+.empty-cart {
+  padding: 2em 1em !important;
+  text-align: center;
+}
+
+.empty-cart a {
+  color: var(--secondary-color);
+  font-weight: var(--fw6);
+}
+
+.hoverable .add-cart-action a {
+  background: var(--secondary-color);
+  color: var(--white-color);
+}
+
+:root[data-theme="dark"] {
+  --white-color: #151521;
+  --light-bg-color: #24243a;
+  --light-text-color: #b8bdd0;
+  --border-color: #34364b;
+  --dark-color: #f6f7fb;
+  --secondary-dark-color: #d8d3ef;
+}
+
+:root[data-theme="dark"] body,
+:root[data-theme="dark"] .header-top,
+:root[data-theme="dark"] .header-nav,
+:root[data-theme="dark"] .header-main,
+:root[data-theme="dark"] footer,
+:root[data-theme="dark"] .newsletter,
+:root[data-theme="dark"] .mini-cart,
+:root[data-theme="dark"] .modal {
+  background: var(--white-color);
+  color: var(--dark-color);
+}
+
+:root[data-theme="dark"] .container1,
+:root[data-theme="dark"] .container1 form,
+:root[data-theme="dark"] .account-grid section,
+:root[data-theme="dark"] .product-media .thumbnail,
+:root[data-theme="dark"] .cat-sort {
+  background: var(--light-bg-color);
+  color: var(--dark-color);
+}
+
+:root[data-theme="dark"] .container1 a,
+:root[data-theme="dark"] .container1 input,
+:root[data-theme="dark"] .container1 span {
+  color: var(--dark-color);
+}
+
+:root[data-theme="dark"] .container1 input,
+:root[data-theme="dark"] .styled :where(input, select, textarea),
+:root[data-theme="dark"] .cart-summary .coupon input {
+  background: #20202f;
+  border-color: var(--border-color);
+  color: var(--dark-color);
+}
+
+.theme-control a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 42px;
+  font-size: 1.25em;
+}
+
+.product-detail {
+  gap: 2em;
+  padding: 2em 0 4em;
+}
+
+.product-detail > .item {
+  flex: 1 1 320px;
+}
+
+.product-media .thumbnail {
+  position: relative;
+  min-height: 420px;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--light-bg-color);
+}
+
+.product-media .thumbnail img {
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+  display: block;
+}
+
+.product-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.product-content .price {
+  display: flex;
+  align-items: baseline;
+  gap: 1em;
+}
+
+.product-content .price .current {
+  color: var(--primary-color);
+  font-size: 2em;
+  font-weight: var(--fw8);
+}
+
+.product-content .price .normal {
+  text-decoration: line-through;
+  color: var(--light-text-color);
+}
+
+.stock-status {
+  color: var(--secondary-color);
+  font-weight: var(--fw6);
+}
+
+.cat-sort {
+  margin-left: auto;
+  min-width: 180px;
+  height: 42px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 0 12px;
+  background: var(--white-color);
+  color: var(--dark-color);
+}
+
+.cat-head {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  flex-wrap: wrap;
+}
+
+.account-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+  padding: 24px 0 64px;
+}
+
+.account-grid section {
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 24px;
+  background: var(--white-color);
+}
+
+.order-card {
+  border-bottom: 1px solid var(--border-color);
+  padding: 12px 0;
+}
+
+.main-container {
+  padding: 24px;
+}
+
+.container1 {
+  min-height: 500px;
+}
+
+.container1 form button,
+.container1 button {
+  transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.container1 form button:hover,
+.container1 button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(10, 2, 28, 0.18);
+}
+
+.container1 form button a {
+  margin: 0;
+  color: inherit;
+  display: inline;
+  pointer-events: none;
+}
+
+.products.main .item,
+.product-detail,
+.account-grid,
+.wishlist-page {
+  animation: store-fade-in 0.35s ease;
+}
+
+.auth-theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1100;
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 50%;
+  background: rgba(10, 2, 28, 0.72);
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  backdrop-filter: blur(8px);
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.auth-theme-toggle:hover {
+  transform: scale(1.06);
+  background: #0a021c;
+}
+
+@keyframes store-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .main-container {
+    min-height: 100vh;
+    height: auto;
+    padding: 16px;
+  }
+
+  .container1 {
+    width: 100%;
+    max-width: 430px;
+    min-height: 560px;
+  }
+
+  .sign-in1,
+  .sign-up1 {
+    width: 100%;
+  }
+
+  .toggle-container1 {
+    display: none;
+  }
+
+  .container1.active1 .sign-in1,
+  .container1.active1 .sign-up1 {
+    transform: none;
+  }
+
+  .container1.active1 .sign-in1 {
+    opacity: 0;
+    z-index: 1;
+  }
+
+  .container1.active1 .sign-up1 {
+    opacity: 1;
+    z-index: 5;
   }
 }
